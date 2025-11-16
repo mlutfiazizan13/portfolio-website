@@ -6,6 +6,7 @@ import Image from "next/image";
 import PersonalImg from "./assets/personal-img.jpg";
 import Line from "./components/line";
 import ContactSection from "./components/contant-section";
+import { ArrowDown, Globe, Quote, Smartphone } from "lucide-react";
 
 
 export default function Home() {
@@ -55,10 +56,7 @@ export default function Home() {
               className="h-[220px] rounded-t-full bg-[#2021241a] px-10 pt-11 cursor-pointer"
             >
               <div className="flex h-[90px] w-[90px] items-center justify-center rounded-full bg-[#323443] text-3xl text-white">
-                {/* <FontAwesomeIcon
-                  icon={faArrowDown}
-                  className="animate-bounce"
-                /> */}
+                <ArrowDown size={35} className="animate-bounce" />
               </div>
             </div>
           </div>
@@ -90,7 +88,7 @@ export default function Home() {
               </p>
 
               <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#323443] text-xl text-white">
-                {/* <FontAwesomeIcon icon={faQuoteLeft} /> */}
+                <Quote size={16} />
               </div>
 
               <p className="opacity-50">
@@ -109,10 +107,7 @@ export default function Home() {
         <section className="pb-20 pt-20">
           <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
             <div className="h-full px-10 py-6 text-center">
-              {/* <FontAwesomeIcon
-                className="mb-1 h-7 w-7 rounded-full bg-[#272727] p-3 text-white"
-                icon={faGlobe}
-              /> */}
+              <Globe size={50} className="mb-1 rounded-full bg-[#272727] p-3 text-white"/>
               <div className="text-black">
                 <p className="mb-2 text-lg font-bold">Web Development</p>
                 <p className="opacity-75">
@@ -127,6 +122,7 @@ export default function Home() {
                 className="mb-1 h-7 w-7 rounded-full bg-[#272727] p-3 text-white"
                 icon={faAndroid}
               /> */}
+              <Smartphone size={50} className="mb-1 rounded-full bg-[#272727] p-3 text-white"/>
               <div className="text-black">
                 <p className="mb-2 text-lg font-bold">
                   Native Android Development
