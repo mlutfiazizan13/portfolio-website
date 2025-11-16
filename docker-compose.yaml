@@ -1,9 +1,0 @@
-version: '1'
-services: 
-  website: 
-    image: personal-website:v1.0.0
-    container_name: personal-website
-  
-    ports:
-    - "8000:80"
-
