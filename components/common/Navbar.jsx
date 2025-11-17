@@ -43,8 +43,8 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bord blur">
       <div className="container o-hidden">
-        <a className="logo icon-img-100" href="#">
-          <img src="/assets/imgs/logo-light.png" alt="logo" />
+        <a className="logo icon-img-30" href="#">
+          <img src="/assets/imgs/lutfi-icon-white.png" alt="logo" />
         </a>
 
         <button
@@ -81,7 +81,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href={"/portofolio"}>
+              <Link className="nav-link" href={"/portfolio"}>
                 <span className="rolling-text">Portofilio</span>
               </Link>
             </li>

@@ -4,14 +4,17 @@ import ProgressScroll from '@/components/common/ProgressScroll';
 import Cursor from '@/components/common/cusor';
 import LoadingScreen from '@/components/common/loader';
 import Footer from '@/components/common/Footer';
-import Marq2 from '@/components/common/Marq2';
 import Navbar from '@/components/common/Navbar';
 import Script from 'next/script';
-import Header from '@/components/p-masonry/Header';
-import Portfolio from '@/components/p-masonry/Portfolio';
+import Header from '@/components/project-details/Header';
+import Challenge from '@/components/project-details/Challenge';
+import Works from '@/components/project-details/Works';
+import Solution from '@/components/project-details/Solution';
+import Wroks2 from '@/components/project-details/Wroks2';
+import Next from '@/components/project-details/Next';
 
 export const metadata = {
-  title: 'Portofolio - Lutfi°',
+  title: 'webfolio',
   icons: {
     icon: '/assets/imgs/favicon.ico',
     shortcut: '/assets/imgs/favicon.ico',
@@ -36,12 +39,16 @@ export default function Home() {
         <div id="smooth-content">
           <main className="main-bg o-hidden">
             <Header />
-            <Portfolio />
-            <Marq2 />
+            <Challenge />
+            <Works />
+            <Solution />
+            <Wroks2 />
+            <Next />
           </main>
           <Footer />
         </div>
       </div>
+
       <Script
         src="/assets/js/ScrollTrigger.min.js"
         strategy="beforeInteractive"
@@ -79,7 +86,7 @@ export default function Home() {
       ></Script>
       <Script
         strategy="beforeInteractive"
-        src="/assets/js/imgReveal/imagesloaded.pkgd.min.js"
+        src="/assets/js/imagesloaded.pkgd.min.js"
       ></Script>
 
       {/* <Script src="/assets/js/smoother-script.js" strategy="lazyOnload" /> */}

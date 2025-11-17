@@ -36,7 +36,10 @@ function About() {
                   from Indonesia, working in software development.
                 </h4>
                 <p>
-                  3.5 years experience. Proven ability to develop, test application, and collaborate in a team. I'm eager to learn, grow and improve my skills. I'm also a tech enthusiast, i love to learn tech related thing. I aim to be more skilled in software engineering and deliver impactful stuff to my customers.
+                  3.5 years experience. Proven ability to develop, test application, 
+                  and collaborate in a team. I'm eager to learn, grow and improve my skills.
+                  I'm also a tech enthusiast, i love to learn tech related thing. 
+                  I aim to be more skilled in software engineering and deliver impactful stuff.
                 </p>
 
                 {/* <div className="numbers mt-50">

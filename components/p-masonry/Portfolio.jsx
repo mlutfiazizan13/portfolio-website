@@ -1,10 +1,26 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import initIsotope2 from '@/common/initIsotope2';
 function Portfolio() {
+  const [projects, setProjects] = useState([]);
+
   useEffect(() => {
-    initIsotope2();
+    let mounted = true;
+
+    fetch("/api/portfolio")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!mounted) return;
+        setProjects(data.data);
+        setTimeout(() => initIsotope2(), 300);
+      })
+      .catch((err) => console.error("Failed to load projects", err));
+
+    return () => {
+      mounted = false;
+    };
   }, []);
+
   return (
     <section className="work-minimal section-padding pb-40">
       <div className="container">
@@ -37,142 +53,32 @@ function Portfolio() {
       </div>
       <div className="container-xxl">
         <div className="gallery2  row sm-marg">
-          <div className="col-lg-6 items design">
-            <div className="item mt-10">
-              <div className="img">
-                <img src="/assets/imgs/works/4/h1.jpg" alt="" />
-                <div className="cont inline d-flex align-items-center">
-                  <div>
-                    <h5>
-                      <a href="/project-details">Nice guy with a smile</a>
-                    </h5>
-                  </div>
-                  <div className="ml-auto">
-                    <p>
-                      <a href="/project-details">Graphic Designing</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 items width2 marketing">
-            <div className="item mt-10">
-              <div className="img">
-                <img src="/assets/imgs/works/4/1.jpg" alt="" />
-                <div className="cont">
-                  <h5>
-                    <a href="/project-details">A Nice guy</a>
-                  </h5>
-                  <p>
-                    <a href="/project-details">Graphic Design</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 items width2 design">
-            <div className="item mt-10">
-              <div className="img">
-                <img src="/assets/imgs/works/4/2.jpg" alt="" />
-                <div className="cont">
-                  <h5>
-                    <a href="/project-details">A Nice guy</a>
-                  </h5>
-                  <p>
-                    <a href="/project-details">Graphic Design</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 items width2 design">
-            <div className="item mt-10">
-              <div className="img">
-                <img src="/assets/imgs/works/4/3.jpg" alt="" />
-                <div className="cont">
-                  <h5>
-                    <a href="/project-details">A Nice guy</a>
-                  </h5>
-                  <p>
-                    <a href="/project-details">Graphic Design</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-3 items width2 marketing">
-            <div className="item mt-10">
-              <div className="img">
-                <img src="/assets/imgs/works/4/4.jpg" alt="" />
-                <div className="cont">
-                  <h5>
-                    <a href="/project-details">A Nice guy</a>
-                  </h5>
-                  <p>
-                    <a href="/project-details">Graphic Design</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-6 items marketing">
-            <div className="item mt-10">
-              <div className="img">
-                <img src="/assets/imgs/works/4/h2.jpg" alt="" />
-                <div className="cont inline d-flex align-items-center">
-                  <div>
-                    <h5>
-                      <a href="/project-details">Nice guy with a smile</a>
-                    </h5>
-                  </div>
-                  <div className="ml-auto">
-                    <p>
-                      <a href="/project-details">Graphic Designing</a>
-                    </p>
+                    {projects.map((project) => (
+            <div 
+              key={project._id || project.id || project.slug}
+              className={`col-lg-6 items width2 ${project.type?.toLowerCase()}`} // e.g. .design
+            >
+              <div className="item mt-10">
+                <div className="img">
+                  <img src={project.image} alt={project.name} />
+
+                  <div className="cont inline d-flex align-items-center">
+                    <div>
+                      <h5>
+                        <a href={`/portfolio/${project.slug}`}>
+                          {project.name}
+                        </a>
+                      </h5>
+                    </div>
+
+                    <div className="ml-auto">
+                      <p>{project.type}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-lg-6 items development">
-            <div className="item mt-10">
-              <div className="img">
-                <img src="/assets/imgs/works/4/h3.jpg" alt="" />
-                <div className="cont inline d-flex align-items-center">
-                  <div>
-                    <h5>
-                      <a href="/project-details">Nice guy with a smile</a>
-                    </h5>
-                  </div>
-                  <div className="ml-auto">
-                    <p>
-                      <a href="/project-details">Graphic Designing</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-6 items development">
-            <div className="item mt-10">
-              <div className="img">
-                <img src="/assets/imgs/works/4/h4.jpg" alt="" />
-                <div className="cont inline d-flex align-items-center">
-                  <div>
-                    <h5>
-                      <a href="/project-details">Nice guy with a smile</a>
-                    </h5>
-                  </div>
-                  <div className="ml-auto">
-                    <p>
-                      <a href="/project-details">Graphic Designing</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))} 
         </div>
       </div>
     </section>
