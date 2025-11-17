@@ -1,155 +1,105 @@
-"use client";
+import generateStylesheetObject from '@/common/generateStylesheetsObject';
+import Script from "next/script";
+import LoadingScreen from '@/components/common/loader';
+import Cursor from '@/components/common/cusor';
+import Lines from '@/components/common/Lines';
+import ProgressScroll from '@/components/common/ProgressScroll';
+import Navbar from '@/components/common/Navbar';
+import Footer from '@/components/common/Footer';
+import Clients from '@/components/common/Clients';
+import Marq2 from '@/components/common/Marq2';
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
+import Testimonials from '@/components/Testimonials';
+import Header from '@/components/Header';
+import Marq from '@/components/Marq';
+import About from '@/components/About';
+import Services from '@/components/Services';
+import Skills from '@/components/Skills';
+import Portfolio from '@/components/Portfolio';
 
-import PersonalImg from "./assets/personal-img.jpg";
-import Line from "./components/line";
-import ContactSection from "./components/contant-section";
-import { ArrowDown, Globe, Quote, Smartphone } from "lucide-react";
 
+export const metadata = {
+  title: 'Home - Lutfi°',
+  icons: {
+    icon: '/assets/imgs/favicon.ico',
+    shortcut: '/assets/imgs/favicon.ico',
+    other: generateStylesheetObject([
+      '/assets/css/plugins.css',
+      '/assets/css/style.css',
+      'https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap',
+      'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap',
+    ]),
+  },
+};
 
 export default function Home() {
-  const aboutRef = useRef<HTMLDivElement | null>(null);
-
-  const scrollToAbout = () => {
-    aboutRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    document.title = "Home - Lutfi°";
-  }, []);
-
   return (
-    <>
-      <div
-        id="container"
-        className="w-full overflow-hidden px-5 lg:pl-[5%] xl:pl-[15%] lg:pr-[calc(5%+90px)] xl:pr-[calc(15%+90px)]"
-      >
-        {/* MAIN BANNER */}
-        <section id="main-banner" className="h-[calc(100vh-90px)]">
-          <div className="flex h-full flex-col items-center justify-between text-black">
-            <div className="relative">
-              <div
-                className="h-[130px] w-[1px] bg-[#2021241a] after:absolute after:bottom-0 after:left-1/2 after:h-3 after:w-3 after:-translate-x-1/2 after:rounded-full after:bg-[#323443] after:content-[attr(after)]"
-              ></div>
-            </div>
-            <div className="text-center">
-              <div className="mb-12">
-                <p className="text-base font-medium uppercase tracking-wider">
-                  Hello! My Name Is
-                </p>
-              </div>
-              <div className="mb-12 text-center">
-                <p className="text-6xl md:text-8xl font-bold">Muhamad</p>
-                <p className="text-6xl md:text-8xl font-bold">Lutfi Azizan</p>
-              </div>
-              <div className="mb-12">
-                <p className="text-base font-medium uppercase tracking-wider">
-                  Fullstack Web Developer
-                </p>
-              </div>
-            </div>
-
-            <div
-              onClick={scrollToAbout}
-              className="h-[220px] rounded-t-full bg-[#2021241a] px-10 pt-11 cursor-pointer"
-            >
-              <div className="flex h-[90px] w-[90px] items-center justify-center rounded-full bg-[#323443] text-3xl text-white">
-                <ArrowDown size={35} className="animate-bounce" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ABOUT ME */}
-        <section
-          ref={aboutRef}
-          id="about-me"
-          className="scroll-mt-[90px] pb-20"
-        >
-          <div className="flex flex-col items-center justify-end text-black">
-            <div className="mb-20 h-[200px] rounded-b-full bg-[#2021241a] px-10 pt-11">
-              <div className="flex h-[90px] w-[90px] items-center justify-center overflow-hidden rounded-full bg-[#323443] text-2xl text-white">
-                <Image
-                  src={PersonalImg}
-                  alt="muhamad-lutfi-azizan"
-                  width={90}
-                  height={90}
-                  className="object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center gap-5 px-5 md:px-20 2xl:px-60 text-center">
-              <p className="text-4xl font-medium">
-                Hello! My name is Lutfi, <br /> I'm a Fullstack Web Developer
-                based in Indonesia
-              </p>
-
-              <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#323443] text-xl text-white">
-                <Quote size={16} />
-              </div>
-
-              <p className="opacity-50">
-                I am a fullstack web developer, with 2.5 years experience.
-                Proven ability to develop and test applications, and collaborate
-                in a team. I enjoy learning tech-related things and always aim
-                to improve my engineering skills and deliver impactful work.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* SERVICES */}
-        <Line text="Services" />
-
-        <section className="pb-20 pt-20">
-          <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
-            <div className="h-full px-10 py-6 text-center">
-              <Globe size={50} className="mb-1 rounded-full bg-[#272727] p-3 text-white"/>
-              <div className="text-black">
-                <p className="mb-2 text-lg font-bold">Web Development</p>
-                <p className="opacity-75">
-                  Unlock the Power of Your Online Presence with our Web
-                  Development Solutions.
-                </p>
-              </div>
-            </div>
-
-            <div className="h-full px-10 py-6 text-center">
-              {/* <FontAwesomeIcon
-                className="mb-1 h-7 w-7 rounded-full bg-[#272727] p-3 text-white"
-                icon={faAndroid}
-              /> */}
-              <Smartphone size={50} className="mb-1 rounded-full bg-[#272727] p-3 text-white"/>
-              <div className="text-black">
-                <p className="mb-2 text-lg font-bold">
-                  Native Android Development
-                </p>
-                <p className="opacity-75">
-                  Creating Android apps that inspire, innovate, and influence!
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SKILLS */}
-        <Line text="Skills" />
-        <section className="pb-10 pt-14">
-          {/* <TechnologyContainer /> */}
-        </section>
-
-        {/* PROJECTS */}
-        <Line text="Recent Project" />
-        <section className="pb-10 pt-14">
-          {/* <ProjectContainer /> */}
-        </section>
-
-        {/* CONTACT */}
-        <ContactSection />
+    <body className="home-personal">
+      <LoadingScreen />
+      <Cursor />
+      <ProgressScroll />
+      <Lines />
+      <Navbar />
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
+          <main className="main-bg o-hidden">
+            <Header />
+            <Marq />
+            <About />
+            <Services />
+            <Portfolio />
+            <Skills />
+            {/* <Testimonials /> */}
+            {/* <Clients /> */}
+            {/* <Blog /> */}
+            <Marq2 />
+          </main>
+          <Footer />
+        </div>
       </div>
-    </>
+      <Script
+        src="/assets/js/ScrollTrigger.min.js"
+        strategy="beforeInteractive"
+      />
+      <Script
+        src="/assets/js/ScrollSmoother.min.js"
+        strategy="beforeInteractive"
+      />
+
+      <Script strategy="beforeInteractive" src="/assets/js/plugins.js"></Script>
+      <Script
+        strategy="beforeInteractive"
+        src="/assets/js/TweenMax.min.js"
+      ></Script>
+      <Script
+        strategy="beforeInteractive"
+        src="/assets/js/charming.min.js"
+      ></Script>
+      <Script
+        strategy="beforeInteractive"
+        src="/assets/js/countdown.js"
+      ></Script>
+
+      <Script
+        strategy="beforeInteractive"
+        src="/assets/js/gsap.min.js"
+      ></Script>
+      <Script
+        strategy="beforeInteractive"
+        src="/assets/js/splitting.min.js"
+      ></Script>
+      <Script
+        strategy="beforeInteractive"
+        src="/assets/js/isotope.pkgd.min.js"
+      ></Script>
+      <Script
+        strategy="beforeInteractive"
+        src="/assets/js/imagesloaded.pkgd.min.js"
+      ></Script>
+
+      {/* <Script src="/assets/js/smoother-script.js" strategy="lazyOnload" /> */}
+
+      <Script src="/assets/js/scripts.js"></Script>
+    </body>
   );
 }
