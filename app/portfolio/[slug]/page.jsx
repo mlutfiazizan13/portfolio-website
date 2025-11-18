@@ -7,11 +7,15 @@ import Footer from '@/components/common/Footer';
 import Navbar from '@/components/common/Navbar';
 import Script from 'next/script';
 import Header from '@/components/project-details/Header';
-import Challenge from '@/components/project-details/Challenge';
-import Works from '@/components/project-details/Works';
-import Solution from '@/components/project-details/Solution';
-import Wroks2 from '@/components/project-details/Wroks2';
+import Info from '@/components/project-details/Info';
 import Next from '@/components/project-details/Next';
+import { notFound } from 'next/navigation';
+import Content from '@/components/project-details/Content';
+
+const getBaseUrl = () =>
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  'http://localhost:3000';
 
 export const metadata = {
   title: 'webfolio',
@@ -27,7 +31,23 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home({ params }) {
+  const { slug } = await params;
+  const res = await fetch(`${getBaseUrl()}/api/project?slug=${slug}`, {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    notFound();
+  }
+
+  const payload = await res.json();
+  const project = payload.data;
+
+  if (!project) {
+    notFound();
+  }
+
   return (
     <body>
       <LoadingScreen />
@@ -36,14 +56,12 @@ export default function Home() {
       <Lines />
       <Navbar />
       <div id="smooth-wrapper">
-        <div id="smooth-content">
+          <div id="smooth-content">
           <main className="main-bg o-hidden">
-            <Header />
-            <Challenge />
-            {/* <Works />
-            <Solution />
-            <Wroks2 /> */}
-            <Next />
+            <Header project={project} />
+            <Info project={project} />
+            <Content blocks={project.content} />
+            <Next project={project} />
           </main>
           <Footer />
         </div>

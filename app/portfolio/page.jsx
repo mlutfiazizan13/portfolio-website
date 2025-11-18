@@ -37,7 +37,7 @@ export default function Home() {
           <main className="main-bg o-hidden">
             <Header />
             <Portfolio />
-            {/* <Marq2 /> */}
+            <Marq2 />
           </main>
           <Footer />
         </div>

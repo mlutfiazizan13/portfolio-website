@@ -42,7 +42,7 @@ function Portfolio() {
 
   useEffect(() => {
     let mounted = true;
-    fetch('/api/portfolio')
+    fetch('/api/project')
       .then((res) => res.json())
       .then((data) => {
         if (!mounted) return;
@@ -98,7 +98,7 @@ function Portfolio() {
                     <div className="cont">
                       <div>
                         <div className="mb-15">
-                          {tech.slice(0, 2).map((t) => (
+                          {tech.map((t) => (
                             <a href="/portfolio-grid" className="tag" key={t.name}>
                               {t.name}
                             </a>
@@ -118,7 +118,7 @@ function Portfolio() {
                   </div>
                   <div className="col-lg-7">
                     <div className="img">
-                      <img src={project.image} alt={project.name} />
+                      <img src={project.coverImage} alt={project.name} />
                     </div>
                   </div>
                 </div>

@@ -3,6 +3,12 @@ import React, { useEffect, useState } from 'react';
 import initIsotope2 from '@/common/initIsotope2';
 function Portfolio() {
   const [projects, setProjects] = useState([]);
+  const [counts, setCounts] = useState({
+    all: 0,
+    apps: 0,
+    devops: 0,
+    databases: 0,
+  });
 
   useEffect(() => {
     let mounted = true;
@@ -11,7 +17,14 @@ function Portfolio() {
       .then((res) => res.json())
       .then((data) => {
         if (!mounted) return;
-        setProjects(data.data);
+        const fetchedProjects = data.data || [];
+        setProjects(fetchedProjects);
+        setCounts({
+          all: fetchedProjects.length,
+          apps: data.counts?.apps,
+          devops: data.counts?.devops,
+          databases: data.counts?.databases,
+        });
         setTimeout(() => initIsotope2(), 300);
       })
       .catch((err) => console.error("Failed to load projects", err));
@@ -34,16 +47,16 @@ function Portfolio() {
           <div className="filtering col-lg-8 d-flex justify-content-end align-items-end">
             <div>
               <div className="filter">
-                <span data-filter="*" className="active" data-count="08">
+                <span data-filter="*" className="active" data-count={counts.all}>
                   All
                 </span>
-                <span data-filter=".apps" data-count="03">
+                <span data-filter=".apps" data-count={counts.apps}>
                   Apps / Software
                 </span>
-                <span data-filter=".devops" data-count="02">
+                <span data-filter=".devops" data-count={counts.devops}>
                   DevOps / Deployment
                 </span>
-                <span data-filter=".databases" data-count="03">
+                <span data-filter=".databases" data-count={counts.databases}>
                   Databases
                 </span>
               </div>
@@ -60,7 +73,7 @@ function Portfolio() {
             >
               <div className="item mt-10">
                 <div className="img">
-                  <img src={project.image} alt={project.name} />
+                  <img src={project.coverImage} alt={project.name} />
 
                   <div className="cont inline d-flex align-items-center">
                     <div>
