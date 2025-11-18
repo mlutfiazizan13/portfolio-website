@@ -40,9 +40,9 @@ export default function Home() {
           <main className="main-bg o-hidden">
             <Header />
             <Challenge />
-            <Works />
+            {/* <Works />
             <Solution />
-            <Wroks2 />
+            <Wroks2 /> */}
             <Next />
           </main>
           <Footer />

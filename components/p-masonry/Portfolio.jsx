@@ -7,7 +7,7 @@ function Portfolio() {
   useEffect(() => {
     let mounted = true;
 
-    fetch("/api/portfolio")
+    fetch("/api/project")
       .then((res) => res.json())
       .then((data) => {
         if (!mounted) return;
@@ -37,14 +37,14 @@ function Portfolio() {
                 <span data-filter="*" className="active" data-count="08">
                   All
                 </span>
-                <span data-filter=".design" data-count="03">
-                  Design
+                <span data-filter=".apps" data-count="03">
+                  Apps / Software
                 </span>
-                <span data-filter=".development" data-count="02">
-                  Development
+                <span data-filter=".devops" data-count="02">
+                  DevOps / Deployment
                 </span>
-                <span data-filter=".marketing" data-count="03">
-                  Marketing
+                <span data-filter=".databases" data-count="03">
+                  Databases
                 </span>
               </div>
             </div>
