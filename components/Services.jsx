@@ -26,7 +26,7 @@ function Services() {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-4">
+          <div className="col-lg-6">
             <div className="item sub-bg md-mb30">
               <div className="icon-img-60 opacity-5 mb-40">
                 <img src="/assets/imgs/serv-icons/3.png" alt="" />
@@ -46,7 +46,7 @@ function Services() {
               </a>
             </div>
           </div>
-          <div className="col-lg-4">
+          {/* <div className="col-lg-4">
             <div className="item sub-bg md-mb30">
               <div className="icon-img-60 opacity-5 mb-40">
                 <img src="/assets/imgs/serv-icons/4.png" alt="" />
@@ -65,8 +65,8 @@ function Services() {
                 <span className="ti-arrow-top-right"></span>
               </a>
             </div>
-          </div>
-          <div className="col-lg-4">
+          </div> */}
+          <div className="col-lg-6">
             <div className="item sub-bg">
               <div className="icon-img-60 opacity-5 mb-40">
                 <img src="/assets/imgs/serv-icons/5.png" alt="" />

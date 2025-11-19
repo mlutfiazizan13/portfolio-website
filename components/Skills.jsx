@@ -1,5 +1,63 @@
 import React from 'react';
 
+const skills = [
+  {
+    name: 'Java',
+    type: 'Programming Language',
+    image: '/assets/imgs/tech/java.png',
+  },
+  {
+    name: 'PHP',
+    type: 'Programming Language',
+    image: '/assets/imgs/tech/php.png',
+  },
+  {
+    name: 'Javascript',
+    type: 'Programming Language',
+    image: '/assets/imgs/tech/js.png',
+  },
+  {
+    name: 'Kotlin',
+    type: 'Programming Language',
+    image: '/assets/imgs/tech/kotlin.png',
+  },
+  {
+    name: 'Python',
+    type: 'Programming Language',
+    image: '/assets/imgs/tech/python.png',
+  },
+    {
+    name: 'Golang',
+    type: 'Programming Language',
+    image: '/assets/imgs/tech/golang.png',
+  },
+  {
+    name: 'Laravel',
+    type: 'Framework',
+    image: '/assets/imgs/tech/laravel.png',
+  },
+  {
+    name: 'Spring Boot',
+    type: 'Framework',
+    image: '/assets/imgs/tech/spring-boot.png',
+  },
+    {
+    name: 'Quarkus',
+    type: 'Framework',
+    image: '/assets/imgs/tech/quarkus.png',
+  },
+      {
+    name: 'Express',
+    type: 'Framework',
+    image: '/assets/imgs/tech/express.png',
+  },
+  {
+    name: 'React',
+    type: 'Library',
+    image: '/assets/imgs/tech/react.png',
+  },
+];
+
 function Skills() {
   return (
     <section className="my-skills section-padding">
@@ -15,72 +73,19 @@ function Skills() {
           </div>
         </div>
         <div className="row md-marg">
-          <div className="col-lg-2 col-md-4 col-6">
-            <div className="item mb-30">
-              <div className="box-bord">
-                <div className="img">
-                  <img src="/assets/imgs/resume/s1.png" alt="" />
+          {skills.map((skill) => (
+            <div key={skill.name} className="col-lg-2 col-md-4 col-6">
+              <div className="item mb-30">
+                <div className="box-bord">
+                  <div className="img">
+                    <img src={skill.image} alt={skill.name} />
+                  </div>
                 </div>
-                <span className="value">95%</span>
+                <h6 className="fz-18">{skill.name}</h6>
+                <p className="fz-14 opacity-7 mb-0">{skill.type}</p>
               </div>
-              <h6 className="fz-18">UI / UX Design</h6>
             </div>
-          </div>
-          <div className="col-lg-2 col-md-4 col-6">
-            <div className="item mb-30">
-              <div className="box-bord">
-                <div className="img">
-                  <img src="/assets/imgs/resume/s2.png" alt="" />
-                </div>
-                <span className="value">90%</span>
-              </div>
-              <h6 className="fz-18">Development</h6>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-4 col-6">
-            <div className="item mb-30">
-              <div className="box-bord">
-                <div className="img">
-                  <img src="/assets/imgs/resume/s3.png" alt="" />
-                </div>
-                <span className="value">85%</span>
-              </div>
-              <h6 className="fz-18">Graphic Design</h6>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-4 col-6">
-            <div className="item mb-30">
-              <div className="box-bord">
-                <div className="img">
-                  <img src="/assets/imgs/resume/s5.png" alt="" />
-                </div>
-                <span className="value">84%</span>
-              </div>
-              <h6 className="fz-18">Sketch</h6>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-4 col-6">
-            <div className="item mb-30">
-              <div className="box-bord">
-                <div className="img">
-                  <img src="/assets/imgs/resume/s4.png" alt="" />
-                </div>
-                <span className="value">78%</span>
-              </div>
-              <h6 className="fz-18">WordPress</h6>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-4 col-6">
-            <div className="item mb-30">
-              <div className="box-bord">
-                <div className="img">
-                  <img src="/assets/imgs/resume/s6.png" alt="" />
-                </div>
-                <span className="value">85%</span>
-              </div>
-              <h6 className="fz-18">Graphic Design</h6>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
