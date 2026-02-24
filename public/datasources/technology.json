@@ -6,43 +6,127 @@
             "id": 1,
             "name": "Java",
             "type": "Programming Language",
-            "image": "/assets/images/java.png"
+            "image": "https://cdn.simpleicons.org/java"
         },
         {
             "id": 2,
             "name": "PHP",
             "type": "Programming Language",
-            "image": "/assets/images/php.png"
+            "image": "https://cdn.simpleicons.org/php"
         },
         {
             "id": 3,
             "name": "Javascript",
             "type": "Programming Language",
-            "image": "/assets/images/js.png"
+            "image": "https://cdn.simpleicons.org/javascript"
         },
         {
             "id": 4,
-            "name": "Kotlin",
+            "name": "Python",
             "type": "Programming Language",
-            "image": "/assets/images/kotlin.png"
+            "image": "https://cdn.simpleicons.org/python"
         },
         {
             "id": 5,
-            "name": "Laravel",
-            "type": "PHP Framework",
-            "image": "/assets/images/laravel.png"
+            "name": "Golang",
+            "type": "Programming Language",
+            "image": "https://cdn.simpleicons.org/go"
         },
         {
             "id": 6,
             "name": "Spring Boot",
             "type": "Java Framework",
-            "image": "/assets/images/spring-boot.png"
+            "image": "https://cdn.simpleicons.org/springboot"
         },
         {
             "id": 7,
+            "name": "Quarkus",
+            "type": "Java Framework",
+            "image": "https://cdn.simpleicons.org/quarkus"
+        },
+        {
+            "id": 8,
+            "name": "Laravel",
+            "type": "PHP Framework",
+            "image": "https://cdn.simpleicons.org/laravel"
+        },
+        {
+            "id": 9,
             "name": "React",
             "type": "Javascript Library",
-            "image": "/assets/images/react.png"
+            "image": "https://cdn.simpleicons.org/react"
+        },
+        {
+            "id": 10,
+            "name": "Flask",
+            "type": "Python Framework",
+            "image": "https://cdn.simpleicons.org/flask"
+        },
+        {
+            "id": 11,
+            "name": "Express.js",
+            "type": "Node.js Framework",
+            "image": "https://cdn.simpleicons.org/express"
+        },
+        {
+            "id": 12,
+            "name": "PostgreSQL",
+            "type": "Database",
+            "image": "https://cdn.simpleicons.org/postgresql"
+        },
+        {
+            "id": 13,
+            "name": "MongoDB",
+            "type": "Database",
+            "image": "https://cdn.simpleicons.org/mongodb"
+        },
+        {
+            "id": 14,
+            "name": "Apache Kafka",
+            "type": "Messaging",
+            "image": "https://cdn.simpleicons.org/apachekafka"
+        },
+        {
+            "id": 15,
+            "name": "MSSQL Server",
+            "type": "Database",
+            "image": "https://cdn.simpleicons.org/microsoftsqlserver"
+        },
+        {
+            "id": 16,
+            "name": "Redis",
+            "type": "Database / Cache",
+            "image": "https://cdn.simpleicons.org/redis"
+        },
+        {
+            "id": 17,
+            "name": "Docker",
+            "type": "DevOps",
+            "image": "https://cdn.simpleicons.org/docker"
+        },
+        {
+            "id": 18,
+            "name": "Kubernetes",
+            "type": "DevOps",
+            "image": "https://cdn.simpleicons.org/kubernetes"
+        },
+        {
+            "id": 19,
+            "name": "Jenkins",
+            "type": "DevOps",
+            "image": "https://cdn.simpleicons.org/jenkins"
+        },
+        {
+            "id": 20,
+            "name": "AWS",
+            "type": "Cloud",
+            "image": "https://cdn.simpleicons.org/amazonwebservices"
+        },
+        {
+            "id": 21,
+            "name": "GCP",
+            "type": "Cloud",
+            "image": "https://cdn.simpleicons.org/googlecloud"
         }
     ]
 }

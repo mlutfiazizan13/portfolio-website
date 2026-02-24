@@ -11,8 +11,8 @@ const ProjectContainer = ({
     async function fetchData(){
         try {
             const result = await getProjects();
-            // console.log(result.data.data[0].technology);
-            setData(result.data.data);
+            const sorted = [...result.data.data].sort((a, b) => new Date(b.date) - new Date(a.date));
+            setData(sorted);
         } catch (error) {
             console.log('Error fetching data:', error);
         }
@@ -39,9 +39,9 @@ const ProjectContainer = ({
                         </div>
                     )
 
-               : 
+               :
                 <div className={classes}>
-                    {projectList.map(({id,slug, name, teaserDesc , desc, image, technology, type, date}) => {
+                    {[...projectList].sort((a, b) => new Date(b.date) - new Date(a.date)).map(({id,slug, name, teaserDesc , desc, image, technology, type, date}) => {
                         return <ProjectCard key={id} id={id} name={name} slug={slug} teaserDesc={teaserDesc} desc={desc} image={image} technology={technology} type={type} date={date}/>
                     })}
                 </div>

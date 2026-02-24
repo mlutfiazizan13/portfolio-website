@@ -20,12 +20,12 @@ class Home extends Component {
   }
   state = {};
 
-  scrollToAbout = () => this.aboutRef.current.scrollIntoView({behavior: "smooth"})
+  scrollToAbout = () => this.aboutRef.current.scrollIntoView({ behavior: "smooth" })
 
   componentDidMount() {
-    document.title = "Home - Lutfi°"; 
- }
-  
+    document.title = "Home - Lutfi°";
+  }
+
 
   render() {
     return (
@@ -54,7 +54,7 @@ class Home extends Component {
                 </div>
                 <div className="mb-12">
                   <p className="text-base font-medium uppercase tracking-wider">
-                    Fullstack Web Developer
+                    Software Engineer
                   </p>
                 </div>
               </div>
@@ -88,19 +88,14 @@ class Home extends Component {
               </div>
               <div className="flex flex-col items-center gap-5 px-5 md:px-20 2xl:px-60 text-center">
                 <p className="text-4xl font-medium">
-                  Hello! My name is Lutfi, <br /> I'm a Fullstack Web Developer
+                  Hello! My name is Lutfi, <br /> I'm a Software Engineer
                   based in Indonesia
                 </p>
                 <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#323443] text-xl text-white">
                   <FontAwesomeIcon icon={faQuoteLeft}></FontAwesomeIcon>
                 </div>
                 <p className="opacity-50">
-                  I am a fullstack web developer, with 2,5 years experience.
-                  Proven ability to develop, test application, and collaborate
-                  in a team. I'm eager to learn, grow and improve my skills. I'm
-                  also a tech enthusiast, i love to learn tech related thing. I
-                  aim to be more skilled in software engineering and deliver
-                  impactful stuff to my customers.
+                  Experienced Software Engineer with 3 years of expertise in developing, testing, and collaborating within a team to deliver high-quality applications. Passionate about technology, I have a constant desire to learn, grow, and refine my skills in software engineering. Proficient in Spring Boot, Laravel, Go, and JavaScript, with hands-on experience in DevOps tools like Docker, Kubernetes, and Jenkins. Familiar with the Agile Software Development Life Cycle (SDLC), I adapt quickly to project requirements, collaborate effectively, and deliver iterative improvements efficiently. With a deep enthusiasm for tech, I continuously explore new advancements and expand my expertise to stay at the forefront of the industry.
                 </p>
               </div>
             </div>
