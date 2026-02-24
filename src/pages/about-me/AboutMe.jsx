@@ -55,31 +55,32 @@ const AboutMe = () => {
 
                         <div className="flex justify-between items-center mb-1">
                             <h3 className="text-lg font-semibold text-gray-900">PT. Teknologi Inovasi Mandiri</h3>
-
-                            <time className=" text-sm font-normal leading-none text-gray-400">Jul 2022 - Sep 2022</time>
                         </div>
-                        <p className="mb-1 text-sm font-normal leading-none text-gray-400">Web Developer - Bootcamp</p>
 
                         <p className="text-base font-normal text-gray-500 mb-2">PT Technology Inovasi Mandiri (TIM) is a system integrator company with high dedication and technical know-how. With various backgrounds in the IT industry, system integrators and IT consultants, our people have deep experience in the world of information technology.</p>
-                        <ol className="pl-4 list-disc">
-                            <li className="text-base font-normal text-gray-500">Learning about Spring boot and working on some internal and external projects</li>
-                        </ol>
 
                         <div className="flex justify-between items-center mb-1 mt-5">
-                        <p className="mb-1 text-sm font-normal leading-none text-gray-400">Web Developer - Contract</p>
-
-                            <time className=" text-sm font-normal leading-none text-gray-400">Sep 2022 - Dec 2022</time>
-                        </div>
-
-                        <ol className="pl-4 list-disc">
-                            <li className="text-base font-normal text-gray-500">Working on projects using spring boot, spring mvc, laravel, etc</li>
-                        </ol>
-                        <div className="flex justify-between items-center mb-1 mt-5">
-                        <p className="mb-1 text-sm font-normal leading-none text-gray-400">Web Developer - Fulltime</p>
+                            <p className="mb-1 text-sm font-normal leading-none text-gray-400">Web Developer - Fulltime</p>
                             <time className=" text-sm font-normal leading-none text-gray-400">Dec 2022 - Present</time>
                         </div>
                         <ol className="pl-4 list-disc">
                             <li className="text-base font-normal text-gray-500">Working on projects using spring boot, spring mvc, laravel, etc</li>
+                        </ol>
+
+                        <div className="flex justify-between items-center mb-1 mt-5">
+                            <p className="mb-1 text-sm font-normal leading-none text-gray-400">Web Developer - Contract</p>
+                            <time className=" text-sm font-normal leading-none text-gray-400">Sep 2022 - Dec 2022</time>
+                        </div>
+                        <ol className="pl-4 list-disc">
+                            <li className="text-base font-normal text-gray-500">Working on projects using spring boot, spring mvc, laravel, etc</li>
+                        </ol>
+
+                        <div className="flex justify-between items-center mb-1 mt-5">
+                            <p className="mb-1 text-sm font-normal leading-none text-gray-400">Web Developer - Bootcamp</p>
+                            <time className=" text-sm font-normal leading-none text-gray-400">Jul 2022 - Sep 2022</time>
+                        </div>
+                        <ol className="pl-4 list-disc">
+                            <li className="text-base font-normal text-gray-500">Learning about Spring boot and working on some internal and external projects</li>
                         </ol>
                     </li>
                     <li className="mb-10 ms-4">
