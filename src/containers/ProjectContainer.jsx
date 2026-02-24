@@ -28,8 +28,8 @@ const ProjectContainer = ({
                 projectList == null ? 
                     data ? (
                             <div className={classes}>
-                            {data.map(({id,slug, name, teaserDesc , desc, image, technology, type}) => {
-                                return <ProjectCard key={id} id={id} name={name} slug={slug} teaserDesc={teaserDesc} desc={desc} image={image} technology={technology} type={type}/>
+                            {data.map(({id,slug, name, teaserDesc , desc, image, technology, type, date}) => {
+                                return <ProjectCard key={id} id={id} name={name} slug={slug} teaserDesc={teaserDesc} desc={desc} image={image} technology={technology} type={type} date={date}/>
                             })}
                         </div>
                     ) : (
@@ -40,8 +40,8 @@ const ProjectContainer = ({
 
                : 
                 <div className={classes}>
-                    {projectList.map(({id,slug, name, teaserDesc , desc, image, technology, type}) => {
-                        return <ProjectCard key={id} id={id} name={name} slug={slug} teaserDesc={teaserDesc} desc={desc} image={image} technology={technology} type={type}/>
+                    {projectList.map(({id,slug, name, teaserDesc , desc, image, technology, type, date}) => {
+                        return <ProjectCard key={id} id={id} name={name} slug={slug} teaserDesc={teaserDesc} desc={desc} image={image} technology={technology} type={type} date={date}/>
                     })}
                 </div>
                

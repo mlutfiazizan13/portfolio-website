@@ -6,8 +6,8 @@
             "id": 1,
             "name": "Yorunify°",
             "slug": "yorunify",
-            "teaserDesc": "Yorunify° is a spotify top track and artist generator",
-            "desc": "Yorunify° is an web based application that i build using create react application. You can see what your top 10 track or artist within last month, last 6 month, and all time.",
+            "teaserDesc": "Yorunify° is a Spotify top track and artist generator.",
+            "desc": "Yorunify° is a web-based application built with React that lets you see your Spotify top 10 tracks or artists across different time ranges — last month, last 6 months, and all time.",
             "image": "/assets/project/yorunify/yorunify-main.png",
             "date": "2024-2-11",
             "type": "Portofolio",
@@ -41,14 +41,33 @@
                     "name": "yotunify-3",
                     "image": "/assets/project/yorunify/yorunify-3.png"
                 }
+            ],
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Yorunify° is a web-based application built with React that lets you see your Spotify top 10 tracks or artists across different time ranges — last month, last 6 months, and all time. It uses the Spotify Web API with OAuth 2.0 authentication."
+                },
+                {
+                    "type": "heading",
+                    "text": "Features"
+                },
+                {
+                    "type": "list",
+                    "items": [
+                        "View top 10 tracks for last month, last 6 months, and all time",
+                        "View top 10 artists across the same time ranges",
+                        "OAuth 2.0 authentication via Spotify",
+                        "Clean, minimal UI focused on the music data"
+                    ]
+                }
             ]
         },
         {
             "id": 2,
             "name": "Lutfi's Personal Website",
             "slug": "lutfis-personal-website",
-            "teaserDesc": "Yorunify° is a spotify top track and artist generator",
-            "desc": "Yorunify° is an web based application that i build using create react application. You can see what your top 10 track or artist within last month, last 6 month, and all time.",
+            "teaserDesc": "The personal portfolio site you are currently viewing, built with React and Tailwind CSS.",
+            "desc": "This is the personal portfolio website you are currently viewing. Built with React and Tailwind CSS, it serves as a central place to showcase my projects, skills, and professional experience.",
             "image": "/assets/project/personal-website/main.png",
             "date": "2023-11-14",
             "type": "Portofolio",
@@ -77,6 +96,26 @@
                     "name": "personal-website-2",
                     "image": "/assets/project/personal-website/2.png"
                 }
+            ],
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "This is the personal portfolio site you are currently viewing. It was built to be a clean, minimal showcase of my work and background. The site uses React Router for page navigation and Tailwind CSS for all styling, with project data sourced from local JSON files."
+                },
+                {
+                    "type": "heading",
+                    "text": "Stack"
+                },
+                {
+                    "type": "list",
+                    "items": [
+                        "React 18 with functional components and hooks",
+                        "React Router v6 for client-side navigation",
+                        "Tailwind CSS for utility-first styling",
+                        "Axios for fetching from local JSON datasources",
+                        "FontAwesome for icons"
+                    ]
+                }
             ]
         },
 
@@ -84,8 +123,8 @@
             "id": 3,
             "name": "Resume Parser & Summarizer",
             "slug": "resume-parser-summarizer",
-            "teaserDesc": "This application is a resume analysis tool built with Quarkus, designed to parse PDF resumes and generate intelligent summaries using Large Language Models (LLMs) via Ollama.",
-            "desc": "This application is a resume analysis tool built with Quarkus, designed to parse PDF resumes and generate intelligent summaries using Large Language Models (LLMs) via Ollama. It automates the extraction of key information such as personal details, education, work experience, and skills from uploaded PDF files. Leveraging the power of LLMs, the system then produces concise, human-readable summaries tailored for quick HR screening or candidate profiling.",
+            "teaserDesc": "A backend tool that parses PDF resumes and generates intelligent summaries using a local LLM via Ollama.",
+            "desc": "A resume analysis tool built with Quarkus that parses PDF resumes and generates intelligent summaries using Large Language Models via Ollama — fully on-premise, no external APIs.",
             "image": "/assets/project/resume-parser-summarizer/main.png",
             "date": "2025-05-29",
             "type": "Portofolio",
@@ -101,7 +140,63 @@
                     "name": "Ollama"
                 }
             ],
-            "images": [
+            "images": [],
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "This application is a resume analysis tool built with Quarkus, designed to parse PDF resumes and generate intelligent summaries using Large Language Models (LLMs) via Ollama. It automates the extraction of key information — personal details, education, work experience, and skills — from uploaded PDF files."
+                },
+                {
+                    "type": "heading",
+                    "text": "How It Works"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "The application exposes a REST endpoint that accepts PDF file uploads. Once received, it uses Apache PDFBox to extract the raw text, then forwards it to a locally running Ollama instance with a structured prompt to produce a clean, human-readable summary."
+                },
+                {
+                    "type": "ordered-list",
+                    "items": [
+                        "User uploads a PDF resume via the REST API",
+                        "Quarkus processes the file and extracts raw text using Apache PDFBox",
+                        "The extracted text is sent to Ollama with a structured summarization prompt",
+                        "The LLM returns a structured summary with key candidate information",
+                        "The summary is returned to the caller as JSON"
+                    ]
+                },
+                {
+                    "type": "heading",
+                    "text": "Key Features"
+                },
+                {
+                    "type": "list",
+                    "items": [
+                        "PDF parsing with Apache PDFBox",
+                        "LLM-powered summarization via Ollama",
+                        "RESTful API built on the Quarkus framework",
+                        "Extracts personal details, education, work experience, and skills",
+                        "Runs fully on-premise — no data sent to external APIs"
+                    ]
+                },
+                {
+                    "type": "callout",
+                    "variant": "info",
+                    "title": "Privacy First",
+                    "text": "By using Ollama locally, all resume processing happens on your own machine. No candidate data is ever sent to external services."
+                },
+                {
+                    "type": "heading",
+                    "text": "Getting Started"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Make sure you have Ollama installed and a model pulled locally before running the application."
+                },
+                {
+                    "type": "code",
+                    "language": "bash",
+                    "text": "# Pull a model\nollama pull llama3\n\n# Start the Quarkus app in dev mode\n./mvnw quarkus:dev"
+                }
             ]
         }
     ]
