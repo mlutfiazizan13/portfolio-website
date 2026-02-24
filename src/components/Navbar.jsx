@@ -4,7 +4,6 @@ import icon from "../assets/images/lutfi-icon-white.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import {
-  faDiscord,
   faGithub,
   faInstagram,
   faLinkedin,

@@ -63,6 +63,7 @@ const ProjectDetail = () => {
         fetchData().then((result) => {
             document.title = `${result.name} - Lutfi°`;
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
 
     return (

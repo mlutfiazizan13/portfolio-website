@@ -19,8 +19,9 @@ const ProjectContainer = ({
     }
 
     useEffect(() => {
-        if (projectList == null) fetchData(); 
-    }, []);
+        if (projectList == null) fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [projectList]);
 
     return ( 
         <>
