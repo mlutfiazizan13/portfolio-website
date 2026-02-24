@@ -118,7 +118,6 @@
                 }
             ]
         },
-
         {
             "id": 3,
             "name": "Resume Parser & Summarizer",
@@ -196,6 +195,144 @@
                     "type": "code",
                     "language": "bash",
                     "text": "# Pull a model\nollama pull llama3\n\n# Start the Quarkus app in dev mode\n./mvnw quarkus:dev"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "API Monetization Gateway",
+            "slug": "api-monetization-gateway",
+            "teaserDesc": "A production-ready API gateway in Go that handles authentication, rate limiting, quota enforcement, usage metering, and Stripe billing for multi-tenant SaaS platforms.",
+            "desc": "A full-featured API monetization gateway built with Go and Chi that sits between clients and upstream APIs — managing API keys, enforcing rate limits and monthly quotas, recording usage metrics, and integrating Stripe billing, all with a clean layered architecture.",
+            "image": "/assets/project/resume-parser-summarizer/main.png",
+            "date": "2026-02-24",
+            "type": "Portfolio",
+            "client": "Personal Portfolio",
+            "repositoryLink": "https://github.com/mlutfiazizan13/api-monitization-gateway",
+            "technology": [
+                {
+                    "id": 1,
+                    "name": "Go"
+                },
+                {
+                    "id": 2,
+                    "name": "Chi"
+                },
+                {
+                    "id": 3,
+                    "name": "PostgreSQL"
+                },
+                {
+                    "id": 4,
+                    "name": "Redis"
+                },
+                {
+                    "id": 5,
+                    "name": "Stripe"
+                },
+                {
+                    "id": 6,
+                    "name": "Docker"
+                },
+                {
+                    "id": 7,
+                    "name": "Swagger"
+                }
+            ],
+            "images": [],
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "API Monetization Gateway is a production-ready reverse proxy and billing layer built with Go and the Chi router. It sits between your clients and any upstream API, transparently handling authentication, rate limiting, quota enforcement, usage metering, and Stripe-powered billing — everything a SaaS product needs to turn an API into a paid service."
+                },
+                {
+                    "type": "heading",
+                    "text": "The Problem It Solves"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Building a monetized API from scratch requires solving a cluster of cross-cutting concerns: secure key issuance, per-plan rate limits, monthly quotas, usage analytics, and billing. This gateway packages all of that into a single deployable service, so upstream APIs stay simple and focused on business logic."
+                },
+                {
+                    "type": "heading",
+                    "text": "Architecture"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "The project follows a clean layered architecture — handlers parse HTTP requests and delegate to services, services contain business logic and call repositories, and repositories own all raw SQL. Redis handles caching and real-time rate limiting; PostgreSQL stores tenants, API keys, and usage history."
+                },
+                {
+                    "type": "ordered-list",
+                    "items": [
+                        "Incoming request hits the gateway endpoint with an API key",
+                        "APIKey Auth Middleware validates the key (Redis cache → PostgreSQL fallback)",
+                        "Rate Limit Middleware checks a Redis sliding window (per-second and per-minute)",
+                        "Quota Middleware checks the tenant's monthly request count against their plan",
+                        "Request is reverse-proxied to the upstream URL with path rewriting",
+                        "Usage event is dispatched asynchronously to a buffered channel worker for recording"
+                    ]
+                },
+                {
+                    "type": "heading",
+                    "text": "Key Features"
+                },
+                {
+                    "type": "list",
+                    "items": [
+                        "API key creation, revocation, and rotation with SHA-256 hashing",
+                        "JWT authentication for the developer portal (24-hour tokens)",
+                        "Redis sliding-window rate limiting — per-second and per-minute, plan-aware",
+                        "Monthly quota enforcement with Redis counters and PostgreSQL fallback",
+                        "Async usage metering via buffered channel (2,000 capacity) and batch worker",
+                        "Stripe billing integration — subscriptions, invoices, and hosted billing portal",
+                        "Reverse proxy with transparent path forwarding to any upstream URL",
+                        "Swagger / OpenAPI documentation auto-generated at /swagger/",
+                        "Multi-stage Docker build with Docker Compose for local development"
+                    ]
+                },
+                {
+                    "type": "heading",
+                    "text": "Subscription Plans"
+                },
+                {
+                    "type": "list",
+                    "items": [
+                        "Free — 1 req/sec, 1,000 requests/month",
+                        "Starter — $29/month, 10 req/sec, 100,000 requests/month",
+                        "Pro — $99/month, 100 req/sec, 1,000,000 requests/month"
+                    ]
+                },
+                {
+                    "type": "callout",
+                    "variant": "info",
+                    "title": "Fail-Open by Design",
+                    "text": "Rate limiting and quota checks are intentionally fail-open. If Redis becomes temporarily unavailable, requests are allowed through rather than dropping legitimate traffic. Availability is prioritised over strict enforcement during infrastructure hiccups."
+                },
+                {
+                    "type": "heading",
+                    "text": "API Overview"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "The gateway exposes three groups of routes: public auth endpoints (/auth/register, /auth/login), a JWT-protected developer portal for key and billing management, and the proxied gateway endpoint (/gateway/*) that accepts an API key via Bearer token, X-API-Key header, or query parameter."
+                },
+                {
+                    "type": "code",
+                    "language": "bash",
+                    "text": "# Register and get a JWT\ncurl -X POST http://localhost:8080/auth/register \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"name\":\"Acme\",\"email\":\"dev@acme.com\",\"password\":\"secret\"}'\n\n# Create an API key\ncurl -X POST http://localhost:8080/keys \\\n  -H 'Authorization: Bearer <jwt>' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"name\":\"production\"}'\n\n# Call the upstream through the gateway\ncurl http://localhost:8080/gateway/v1/data \\\n  -H 'Authorization: Bearer gw_xxxxxxxxxxxxxxxx'"
+                },
+                {
+                    "type": "heading",
+                    "text": "Getting Started"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Clone the repository, copy the environment file, spin up the infrastructure with Docker Compose, run the database migrations, and start the server with hot reload."
+                },
+                {
+                    "type": "code",
+                    "language": "bash",
+                    "text": "# Start PostgreSQL and Redis\nmake docker-up\n\n# Copy environment config\ncp .env.example .env\n\n# Run database migrations\nmake migrate-up\n\n# Start the server with hot reload\nmake dev"
                 }
             ]
         }
