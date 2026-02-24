@@ -48,40 +48,9 @@ const AboutMe = () => {
                 <Line text="Experience"></Line>
 
                
-                <ol className="relative border-s border-gray-200 mx-2">                  
-                    <li className="mb-10 ms-4">
-                        <div className="absolute w-3 h-3 bg-[#323443] rounded-full mt-1.5  -start-1.5 border border-white"></div>
-                        
-                        <div className="flex justify-between items-center mb-1">
-                            <h3 className="text-lg font-semibold text-gray-900">Kejar.id</h3>
-
-                            <time className=" text-sm font-normal leading-none text-gray-400">Jan 2021 - Mar 2021</time>
-                        </div>
-                        <p className="mb-1 text-sm font-normal leading-none text-gray-400">Web Developer - Internship</p>
-                        
-                        
-                        <p className="mb-4 text-base font-normal text-gray-500">Kejar.id provides learning content, learning management systems (LMS), and educational information systems for schools with a complete, measurable, and monitored philosophy.</p>
-                    </li>
+                <ol className="relative border-s border-gray-200 mx-2">
                     <li className="mb-10 ms-4">
 
-                        
-                        <div className="absolute w-3 h-3 bg-[#323443] rounded-full mt-1.5 -start-1.5 border border-white"></div>
-
-                        <div className="flex justify-between items-center mb-1">
-                            <h3 className="text-lg font-semibold text-gray-900">PT. Agatra Kreasi Teknologi</h3>
-
-                            <time className=" text-sm font-normal leading-none text-gray-400">Aug 2021 - Nov 2021</time>
-                        </div>
-                        <p className="mb-1 text-sm font-normal leading-none text-gray-400">Backend Web Developer - Internship</p>
-
-                        <p className="text-base font-normal text-gray-500 mb-2">Agatra is one of the few IT system integration, professional service and software development companies in Bandung.</p>
-                        <ol className="pl-4 list-disc">
-                            <li className="text-base font-normal text-gray-500">Build Restful API using Yii2 for PT Agatra Kreasi Teknologi's Company Profile</li>
-                            <li className="text-base font-normal text-gray-500"> Build Admin Page using Angular for PT Agatra Kreasi Teknologi's Company Profile</li>
-                        </ol>
-                    </li>
-                    <li className="ms-4">
-                            
                         <div className="absolute w-3 h-3 bg-[#323443] rounded-full mt-1.5 -start-1.5 border border-white"></div>
 
                         <div className="flex justify-between items-center mb-1">
@@ -112,6 +81,35 @@ const AboutMe = () => {
                         <ol className="pl-4 list-disc">
                             <li className="text-base font-normal text-gray-500">Working on projects using spring boot, spring mvc, laravel, etc</li>
                         </ol>
+                    </li>
+                    <li className="mb-10 ms-4">
+
+                        <div className="absolute w-3 h-3 bg-[#323443] rounded-full mt-1.5 -start-1.5 border border-white"></div>
+
+                        <div className="flex justify-between items-center mb-1">
+                            <h3 className="text-lg font-semibold text-gray-900">PT. Agatra Kreasi Teknologi</h3>
+
+                            <time className=" text-sm font-normal leading-none text-gray-400">Aug 2021 - Nov 2021</time>
+                        </div>
+                        <p className="mb-1 text-sm font-normal leading-none text-gray-400">Backend Web Developer - Internship</p>
+
+                        <p className="text-base font-normal text-gray-500 mb-2">Agatra is one of the few IT system integration, professional service and software development companies in Bandung.</p>
+                        <ol className="pl-4 list-disc">
+                            <li className="text-base font-normal text-gray-500">Build Restful API using Yii2 for PT Agatra Kreasi Teknologi's Company Profile</li>
+                            <li className="text-base font-normal text-gray-500"> Build Admin Page using Angular for PT Agatra Kreasi Teknologi's Company Profile</li>
+                        </ol>
+                    </li>
+                    <li className="ms-4">
+                        <div className="absolute w-3 h-3 bg-[#323443] rounded-full mt-1.5  -start-1.5 border border-white"></div>
+
+                        <div className="flex justify-between items-center mb-1">
+                            <h3 className="text-lg font-semibold text-gray-900">Kejar.id</h3>
+
+                            <time className=" text-sm font-normal leading-none text-gray-400">Jan 2021 - Mar 2021</time>
+                        </div>
+                        <p className="mb-1 text-sm font-normal leading-none text-gray-400">Web Developer - Internship</p>
+
+                        <p className="mb-4 text-base font-normal text-gray-500">Kejar.id provides learning content, learning management systems (LMS), and educational information systems for schools with a complete, measurable, and monitored philosophy.</p>
                     </li>
                 </ol>
 
