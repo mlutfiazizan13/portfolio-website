@@ -335,6 +335,151 @@
                     "text": "# Start PostgreSQL and Redis\nmake docker-up\n\n# Copy environment config\ncp .env.example .env\n\n# Run database migrations\nmake migrate-up\n\n# Start the server with hot reload\nmake dev"
                 }
             ]
+        },
+        {
+            "id": 5,
+            "name": "URL Shortener",
+            "slug": "url-shortener",
+            "teaserDesc": "A full-stack URL shortener built with Node.js and React that converts long URLs into shareable short links with click analytics, expiration control, and JWT-based user authentication.",
+            "desc": "A full-stack URL shortener service built with Express.js, PostgreSQL, and React — featuring user authentication, short link generation, optional expiration dates, and per-link click analytics, all wrapped in a clean Tailwind UI.",
+            "image": "/assets/project/url-shortener/main.png",
+            "date": "2025-11-16",
+            "type": "Portfolio",
+            "client": "Personal Portfolio",
+            "repositoryLink": "https://github.com/mlutfiazizan13/url-shortener",
+            "technology": [
+                {
+                    "id": 1,
+                    "name": "Node.js"
+                },
+                {
+                    "id": 2,
+                    "name": "Express.js"
+                },
+                {
+                    "id": 3,
+                    "name": "PostgreSQL"
+                },
+                {
+                    "id": 4,
+                    "name": "Sequelize"
+                },
+                {
+                    "id": 5,
+                    "name": "React"
+                },
+                {
+                    "id": 6,
+                    "name": "Vite"
+                },
+                {
+                    "id": 7,
+                    "name": "Tailwind CSS"
+                },
+                {
+                    "id": 8,
+                    "name": "JWT"
+                }
+            ],
+            "images": [],
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "URL Shortener is a full-stack web application that turns long, unwieldy URLs into clean, shareable short links. Built with Express.js on the backend and React on the frontend, it gives registered users a personal dashboard to create, manage, and track every link they shorten — including click counts, referrers, and optional expiration dates."
+                },
+                {
+                    "type": "heading",
+                    "text": "The Problem It Solves"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Long URLs break in emails, look unprofessional in social posts, and are impossible to remember. This service lets users generate concise short codes in one click, set an expiry when the link is time-sensitive, and review analytics to understand how their links are being used — all without relying on a third-party service."
+                },
+                {
+                    "type": "heading",
+                    "text": "Architecture"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "The project is split into two independently runnable apps. The backend follows an MVC pattern — routes delegate to controllers, controllers contain business logic, and Sequelize models own the database layer. The frontend is a React SPA that communicates with the API over fetch, persisting the JWT in localStorage for a seamless session between page loads."
+                },
+                {
+                    "type": "ordered-list",
+                    "items": [
+                        "User registers or logs in — the server returns a signed JWT (1-day expiry)",
+                        "Authenticated user submits a long URL (and optional expiration date) to POST /url/shorten",
+                        "The backend generates a random 6-character short code, persists it with Sequelize, and returns the short URL",
+                        "Anyone visiting the short link hits GET /:shortCode — the server resolves the code, records the click (IP, referrer, user agent), and issues a 302 redirect",
+                        "The owner can view per-link stats or delete the link from their dashboard"
+                    ]
+                },
+                {
+                    "type": "heading",
+                    "text": "Key Features"
+                },
+                {
+                    "type": "list",
+                    "items": [
+                        "User registration and login with bcrypt password hashing and JWT authentication",
+                        "One-click URL shortening with random 6-character short codes",
+                        "Optional expiration dates — short links can be set to expire automatically",
+                        "Click tracking per redirect: timestamp, IP address, HTTP referrer, and user agent",
+                        "Per-link statistics dashboard showing total clicks and click history",
+                        "Delete links at any time from the authenticated dashboard",
+                        "Copy-to-clipboard button for instant sharing",
+                        "React SPA frontend with Tailwind CSS styling and lucide-react icons",
+                        "Sequelize ORM with PostgreSQL — auto-sync on startup for frictionless local dev"
+                    ]
+                },
+                {
+                    "type": "heading",
+                    "text": "Database Schema"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Three Sequelize models cover the full data model. Users own URLs (one-to-many), and each URL accumulates Clicks every time the short link is followed. All primary keys are UUIDs for safe distributed use."
+                },
+                {
+                    "type": "list",
+                    "items": [
+                        "User — id (UUID), email (unique), passwordHash, timestamps",
+                        "Url — id (UUID), originalUrl, shortCode (unique, max 10 chars), expiresAt (nullable), userId FK",
+                        "Click — id (UUID), ipAddress, referrer, userAgent, clickedAt, urlId FK"
+                    ]
+                },
+                {
+                    "type": "heading",
+                    "text": "API Overview"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "The API exposes public auth and redirect endpoints alongside JWT-protected routes for URL management. All protected endpoints expect an Authorization: Bearer <token> header."
+                },
+                {
+                    "type": "code",
+                    "language": "bash",
+                    "text": "# Register a new account\ncurl -X POST http://localhost:3000/register \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"email\":\"user@example.com\",\"password\":\"secret\"}'\n\n# Log in and get a JWT\ncurl -X POST http://localhost:3000/login \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"email\":\"user@example.com\",\"password\":\"secret\"}'\n\n# Shorten a URL (optional expiry)\ncurl -X POST http://localhost:3000/url/shorten \\\n  -H 'Authorization: Bearer <token>' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"originalUrl\":\"https://example.com/very/long/path\",\"expiresAt\":\"2026-12-31T23:59:59Z\"}'\n\n# Follow a short link (public)\ncurl -L http://localhost:3000/abc123\n\n# View click stats\ncurl http://localhost:3000/url/stats/abc123 \\\n  -H 'Authorization: Bearer <token>'"
+                },
+                {
+                    "type": "heading",
+                    "text": "Getting Started"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Clone the repository, configure environment variables for both apps, and start the backend and frontend dev servers separately."
+                },
+                {
+                    "type": "code",
+                    "language": "bash",
+                    "text": "# Install backend dependencies and configure env\ncd backend\nnpm install\ncp .env.example .env   # fill in DB_HOST, DB_NAME, DB_USER, DB_PASS, JWT_SECRET\n\n# Start the API server (default: http://localhost:3000)\nnpm start\n\n# In a separate terminal — install and start the frontend\ncd frontend\nnpm install\nnpm run dev   # Vite dev server at http://localhost:5173"
+                },
+                {
+                    "type": "callout",
+                    "variant": "info",
+                    "title": "API Documentation",
+                    "text": "A full Postman collection with example requests and responses is published at https://documenter.getpostman.com/view/14331304/2sB3WwpH83 — import it to explore every endpoint without writing a single curl command."
+                }
+            ]
         }
     ]
 }
