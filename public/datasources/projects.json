@@ -12,7 +12,9 @@
             "date": "2024-2-11",
             "type": "Portofolio",
             "client": "Personal Portofolio",
-            "repositoryLink": "https://github.com/mlutfiazizan13/yorunify",
+            "repositoryLinks": [
+                {"label": "Repository", "url": "https://github.com/mlutfiazizan13/yorunify"}
+            ],
             "technology": [
                 {
                     "id": 1,
@@ -72,7 +74,9 @@
             "date": "2023-11-14",
             "type": "Portofolio",
             "client": "Personal Portofolio",
-            "repositoryLink": "https://github.com/mlutfiazizan13/portofolio-website",
+            "repositoryLinks": [
+                {"label": "Repository", "url": "https://github.com/mlutfiazizan13/portofolio-website"}
+            ],
             "technology": [
                 {
                     "id": 1,
@@ -128,7 +132,9 @@
             "date": "2025-05-29",
             "type": "Portofolio",
             "client": "Personal Portofolio",
-            "repositoryLink": "https://github.com/mlutfiazizan13/simple-resume-parser",
+            "repositoryLinks": [
+                {"label": "Repository", "url": "https://github.com/mlutfiazizan13/simple-resume-parser"}
+            ],
             "technology": [
                 {
                     "id": 1,
@@ -204,11 +210,14 @@
             "slug": "api-monetization-gateway",
             "teaserDesc": "A production-ready API gateway in Go that handles authentication, rate limiting, quota enforcement, usage metering, and Stripe billing for multi-tenant SaaS platforms.",
             "desc": "A full-featured API monetization gateway built with Go and Chi that sits between clients and upstream APIs — managing API keys, enforcing rate limits and monthly quotas, recording usage metrics, and integrating Stripe billing, all with a clean layered architecture.",
-            "image": "/assets/project/resume-parser-summarizer/main.png",
+            "image": "/assets/project/api-monetization-gateway/main.png",
             "date": "2026-02-24",
             "type": "Portfolio",
             "client": "Personal Portfolio",
-            "repositoryLink": "https://github.com/mlutfiazizan13/api-monitization-gateway",
+            "repositoryLinks": [
+                {"label": "Backend", "url": "https://github.com/mlutfiazizan13/api-monitization-gateway"},
+                {"label": "Developer Portal", "url": "https://github.com/mlutfiazizan13/api-monitization-gateway-developer-portal"}
+            ],
             "technology": [
                 {
                     "id": 1,
@@ -237,9 +246,26 @@
                 {
                     "id": 7,
                     "name": "Swagger"
+                },
+                {
+                    "id": 8,
+                    "name": "Next.js"
+                },
+                {
+                    "id": 9,
+                    "name": "Tailwind CSS"
+                },
+                {
+                    "id": 10,
+                    "name": "TypeScript"
                 }
             ],
-            "images": [],
+            "images": [
+                {"id": 1, "name": "api-monetization-gateway-1", "image": "/assets/project/api-monetization-gateway/img1.png"},
+                {"id": 2, "name": "api-monetization-gateway-2", "image": "/assets/project/api-monetization-gateway/img2.png"},
+                {"id": 3, "name": "api-monetization-gateway-3", "image": "/assets/project/api-monetization-gateway/img3.png"},
+                {"id": 4, "name": "api-monetization-gateway-4", "image": "/assets/project/api-monetization-gateway/img4.png"}
+            ],
             "content": [
                 {
                     "type": "paragraph",
@@ -346,7 +372,9 @@
             "date": "2025-11-16",
             "type": "Portfolio",
             "client": "Personal Portfolio",
-            "repositoryLink": "https://github.com/mlutfiazizan13/url-shortener",
+            "repositoryLinks": [
+                {"label": "Repository", "url": "https://github.com/mlutfiazizan13/url-shortener"}
+            ],
             "technology": [
                 {
                     "id": 1,

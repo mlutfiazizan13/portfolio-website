@@ -182,20 +182,25 @@ const ProjectDetail = () => {
                                         ))}
                                     </div>
                                 </div>
-                                {data.repositoryLink && (
-                                    <a
-                                        href={data.repositoryLink}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#323443] text-white text-sm font-medium rounded-full hover:opacity-80 transition-opacity duration-200 whitespace-nowrap shrink-0"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                            <polyline points="15 3 21 3 21 9" />
-                                            <line x1="10" y1="14" x2="21" y2="3" />
-                                        </svg>
-                                        View Repository
-                                    </a>
+                                {data.repositoryLinks && data.repositoryLinks.length > 0 && (
+                                    <div className="flex flex-wrap gap-2">
+                                        {data.repositoryLinks.map(({ label, url }, index) => (
+                                            <a
+                                                key={index}
+                                                href={url}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#323443] text-white text-sm font-medium rounded-full hover:opacity-80 transition-opacity duration-200 whitespace-nowrap shrink-0"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                                    <polyline points="15 3 21 3 21 9" />
+                                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                                </svg>
+                                                {label || "View Repository"}
+                                            </a>
+                                        ))}
+                                    </div>
                                 )}
                             </div>
                         </section>
