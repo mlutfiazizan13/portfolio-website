@@ -1,35 +1,31 @@
 import { useEffect } from "react";
-import ProjectContainer from "../../containers/ProjectContainer";
+import { Link, useLocation } from "react-router-dom";
+import Endpoint from "../../components/Endpoint";
+import JsonCode from "../../components/JsonCode";
 
 const NotFound = () => {
+  const { pathname } = useLocation();
 
   useEffect(() => {
-      document.title = 'NotFound - Lutfi°';
+      document.title = 'Not Found - Lutfi°';
   }, []);
+
   return (
-      <div
-          id="container"
-          className="w-full overflow-hidden px-5 lg:pl-[5%] xl:pl-[15%] lg:pr-[calc(5%+90px)] xl:pr-[calc(15%+90px)] pb-20"
+      <Endpoint
+          id="main-banner"
+          method="GET"
+          path={pathname}
+          panel={<JsonCode value={{ status: 404, error: "Not Found", path: pathname }} />}
       >
-          <section id="main-banner" className="pb-20">
-            <div className="flex h-full flex-col items-center gap-5 text-black">
-              <div className="relative">
-                <div
-                  after=""
-                  className="h-[130px] w-[1px] bg-[#2021241a] after:absolute after:bottom-0 after:left-1/2 after:h-3 after:w-3 after:-translate-x-1/2 after:rounded-full after:bg-[#323443] after:content-[attr(after)]"
-                ></div>
-              </div>
-              <div className="text-center">
-                <div className="mb-12 text-center">
-                  <p className="text-6xl md:text-8xl font-bold">Not Found</p>
-                </div>
-                <p className="text-xl">Empowering Innovation, Connecting Futures.</p>
-              </div>
-
-            </div>
-          </section>
-
-      </div>
+          <h1 className="title mt-5 text-[clamp(2.75rem,5.2vw,4.75rem)]">Page not found</h1>
+          <p className="mt-6 max-w-[30em] text-xl leading-snug">
+            Nothing lives at this address. The link may be old, or the project may have been renamed.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to={"/projects"} className="btn">GET /projects</Link>
+            <Link to={"/"} className="btn-outline">Go to the home page</Link>
+          </div>
+      </Endpoint>
   );
 };
 

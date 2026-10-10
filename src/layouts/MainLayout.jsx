@@ -1,38 +1,31 @@
-import { Fragment } from "react";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-
 
 const MainLayout = () => {
-
-    const scrollToTop = ()  => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    }
-    return ( 
-        <Fragment>
-            <div id='page-container' className='relative min-h-screen bg-white'>
+    return (
+        <>
+            <div id='page-container' className='min-h-screen'>
+                <a href="#content-wrap" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-white">
+                    Skip to content
+                </a>
                 <Navbar />
-                <div id='content-wrap' className='pt-[90px] pb-20 lg:ml-[90px] lg:w-[calc(100%-90px)]'>
-                    <Outlet />
-                </div>
-                <footer id='footer' className='absolute bottom-0 w-full'>
-                    <Footer />
-                </footer>
-
-                <div onClick={scrollToTop} className="fixed flex justify-center items-center text-2xl text-white right-0 bottom-0 w-[90px] h-[90px] bg-[#323443] border-l-[0.1px] border-gray-700">
-                    <FontAwesomeIcon icon={faArrowUp}></FontAwesomeIcon>
+                <div className="lg:flex">
+                    <Sidebar />
+                    <div className="min-w-0 flex-1">
+                        <main id='content-wrap'>
+                            <Outlet />
+                        </main>
+                        <footer id='footer'>
+                            <Footer />
+                        </footer>
+                    </div>
                 </div>
             </div>
             <ScrollRestoration />
-
-        </Fragment>
+        </>
      );
 }
- 
+
 export default MainLayout;
