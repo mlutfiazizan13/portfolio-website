@@ -1,103 +1,78 @@
 import { useEffect, useState } from "react";
 import { getTechnologies } from "../services/Service";
-import TechnologyCard from "../components/TechnologyCard";
+import Endpoint from "../components/Endpoint";
+import JsonCode from "../components/JsonCode";
 
-const TechnologyContainer = ({
-    classes = 'grid grid-cols-2 lg:grid-cols-3 items-center gap-5',
-}) => {
+// Each technology's "type" in technology.json is sorted into one of these rows
+const groups = [
+    { key: "languages", match: /language/i },
+    { key: "frameworks", match: /framework|library/i },
+    { key: "data", match: /database|cache|messaging/i },
+    { key: "infrastructure", match: /devops|cloud/i },
+];
+
+const groupTechnologies = (technologies) => {
+    const rows = groups.map(({ key }) => ({ key, names: [] }));
+    const other = { key: "other", names: [] };
+
+    technologies.forEach(({ name, type }) => {
+        const index = groups.findIndex(({ match }) => match.test(type));
+        (index === -1 ? other : rows[index]).names.push(name);
+    });
+
+    return [...rows, other].filter(({ names }) => names.length > 0);
+};
+
+/**
+ * TechnologyContainer — the whole "GET /stack" section: the skills table
+ * and an example request for the first group.
+ */
+const TechnologyContainer = () => {
 
     const [data, setData] = useState([]);
-    const [isLoading, setLoading] = useState(true);
 
     async function fetchData(){
         try {
             const result = await getTechnologies();
-            // console.log(result.data);
             setData(result.data.data);
-
-            setTimeout( () => {
-                setLoading(false);
-            }, 1000);
-            
         } catch (error) {
             console.log('Error fetching data:', error);
         }
     }
 
-
     useEffect(() => {
         fetchData();
     }, []);
 
+    const rows = groupTechnologies(data);
+    const example = rows[0];
 
-    return ( 
-        <>
-            <div className={classes}>
-            {!isLoading ? (
-                    data.map(({id, name, type, image}) => {
-                        return <TechnologyCard key={id} id={id} name={name} type={type} image={image}/>
-                    })
-               
-            ) : (
+    return (
+        <Endpoint
+            id="stack"
+            method="GET"
+            path="/stack"
+            panelLabel="Request"
+            panel={example && (
                 <>
-                    <div role="status" className="space-y-5 animate-pulse  py-4 px-5 ">
-                        <div className="flex items-center w-full rounded sm:w-96">
-                            <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
-                            </svg>
-                        </div>
-                        <div className="w-full">
-                            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                            <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-
-                        </div>
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                    <div role="status" className="space-y-5 animate-pulse  py-4 px-5 ">
-                        <div className="flex items-center w-full rounded sm:w-96">
-                            <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
-                            </svg>
-                        </div>
-                        <div className="w-full">
-                            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                            <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-
-                        </div>
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                    <div role="status" className="space-y-5 animate-pulse  py-4 px-5 ">
-                        <div className="flex items-center w-full rounded sm:w-96">
-                            <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
-                            </svg>
-                        </div>
-                        <div className="w-full">
-                            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                            <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-
-                        </div>
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                    <div role="status" className="space-y-5 animate-pulse  py-4 px-5 ">
-                        <div className="flex items-center w-full rounded sm:w-96">
-                            <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
-                            </svg>
-                        </div>
-                        <div className="w-full">
-                            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                            <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-
-                        </div>
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                    
+                    <pre className="mb-5 whitespace-pre-wrap font-mono text-[15px] leading-[1.8] [overflow-wrap:anywhere]">
+                        <span className="text-panel-muted">$</span> curl /stack?type=<span className="text-panel-string">{example.key}</span>
+                    </pre>
+                    <JsonCode value={example.names} />
                 </>
             )}
-             </div>
-        </>
+        >
+            <h2 className="title mb-6 mt-4 text-4xl md:text-[44px]">Supported technologies</h2>
+            <dl className="border-t border-line">
+                {rows.map(({ key, names }) => (
+                    <div key={key} className="flex flex-wrap gap-x-6 gap-y-1 border-b border-line py-3.5">
+                        <dt className="w-36 flex-none font-mono text-sm leading-7 text-muted">{key}</dt>
+                        <dd className="min-w-0 flex-1 basis-60 font-semibold">{names.join(", ")}</dd>
+                    </div>
+                ))}
+            </dl>
+        </Endpoint>
      );
 }
- 
+
 export default TechnologyContainer;

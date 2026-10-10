@@ -15,48 +15,47 @@
  */
 
 const calloutStyles = {
-    info:    'border-blue-300  bg-blue-50   text-blue-900',
-    warning: 'border-yellow-300 bg-yellow-50 text-yellow-900',
-    tip:     'border-green-300 bg-green-50  text-green-900',
-    note:    'border-gray-200  bg-gray-50   text-gray-700',
+    info:    'border-post        bg-blue-50     text-ink',
+    warning: 'border-amber-500   bg-amber-50    text-amber-950',
+    tip:     'border-get         bg-emerald-50  text-emerald-950',
+    note:    'border-muted       bg-mist        text-soft',
 };
 
 const ContentRenderer = ({ blocks, onImageClick }) => {
     if (!blocks || blocks.length === 0) return null;
 
     return (
-        <div className="space-y-5">
+        <div className="max-w-[68ch] space-y-5 break-words">
             {blocks.map((block, index) => {
                 switch (block.type) {
 
                     case 'paragraph':
                         return (
-                            <p key={index} className="text-lg leading-relaxed text-gray-700">
+                            <p key={index} className="text-lg leading-relaxed text-soft">
                                 {block.text}
                             </p>
                         );
 
                     case 'heading':
                         return (
-                            <h2 key={index} className="text-2xl font-bold text-black pt-6 pb-1 border-b border-gray-100">
+                            <h2 key={index} className="title pb-1 pt-8 text-3xl">
                                 {block.text}
                             </h2>
                         );
 
                     case 'subheading':
                         return (
-                            <h3 key={index} className="text-xl font-semibold text-black pt-3">
+                            <h3 key={index} className="pt-3 text-xl font-extrabold tracking-tight">
                                 {block.text}
                             </h3>
                         );
 
                     case 'list':
                         return (
-                            <ul key={index} className="space-y-1.5 pl-5">
+                            <ul key={index} className="list-outside list-disc space-y-2 pl-5 marker:text-get">
                                 {(block.items || []).map((item, i) => (
-                                    <li key={i} className="text-base leading-relaxed text-gray-700 flex gap-2">
-                                        <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-[#323443] opacity-60"></span>
-                                        <span>{item}</span>
+                                    <li key={i} className="pl-1 text-lg leading-relaxed text-soft">
+                                        {item}
                                     </li>
                                 ))}
                             </ul>
@@ -64,9 +63,9 @@ const ContentRenderer = ({ blocks, onImageClick }) => {
 
                     case 'ordered-list':
                         return (
-                            <ol key={index} className="space-y-1.5 pl-5 list-decimal list-outside">
+                            <ol key={index} className="list-outside list-decimal space-y-2 pl-6 marker:font-mono marker:text-base marker:font-bold marker:text-get">
                                 {(block.items || []).map((item, i) => (
-                                    <li key={i} className="text-base leading-relaxed text-gray-700 pl-1">
+                                    <li key={i} className="pl-1 text-lg leading-relaxed text-soft">
                                         {item}
                                     </li>
                                 ))}
@@ -76,24 +75,24 @@ const ContentRenderer = ({ blocks, onImageClick }) => {
                     case 'callout': {
                         const style = calloutStyles[block.variant] || calloutStyles.note;
                         return (
-                            <div key={index} className={`border-l-4 px-5 py-4 rounded-r-xl ${style}`}>
+                            <div key={index} className={`rounded-r-lg border-l-4 px-5 py-4 ${style}`}>
                                 {block.title && (
-                                    <p className="font-semibold text-sm uppercase tracking-wide mb-1.5">{block.title}</p>
+                                    <p className="mb-1.5 font-extrabold">{block.title}</p>
                                 )}
-                                <p className="text-sm leading-relaxed">{block.text}</p>
+                                <p className="text-base leading-relaxed">{block.text}</p>
                             </div>
                         );
                     }
 
                     case 'code':
                         return (
-                            <div key={index} className="relative group">
+                            <div key={index} className="relative">
                                 {block.language && (
-                                    <span className="absolute top-3 right-4 text-xs font-mono text-gray-500 uppercase select-none">
+                                    <span className="absolute right-4 top-3 select-none font-mono text-xs text-panel-muted">
                                         {block.language}
                                     </span>
                                 )}
-                                <pre className="bg-[#1e1e2e] text-[#cdd6f4] rounded-xl px-6 py-5 overflow-x-auto text-sm font-mono leading-relaxed">
+                                <pre tabIndex={0} className="overflow-x-auto rounded-lg bg-panel px-6 py-5 font-mono text-sm leading-relaxed text-panel-text">
                                     <code>{block.text}</code>
                                 </pre>
                             </div>
@@ -102,18 +101,19 @@ const ContentRenderer = ({ blocks, onImageClick }) => {
                     case 'image':
                         return (
                             <figure key={index} className="my-4">
-                                <div
-                                    className="overflow-hidden cursor-zoom-in group aspect-video rounded-sm"
+                                <button
+                                    type="button"
+                                    className="block aspect-video w-full cursor-zoom-in overflow-hidden rounded-lg border border-line bg-mist"
                                     onClick={() => onImageClick && onImageClick(block.src)}
                                 >
                                     <img
                                         src={block.src}
                                         alt={block.alt || ''}
-                                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                                        className="h-full w-full object-cover object-top"
                                     />
-                                </div>
+                                </button>
                                 {block.caption && (
-                                    <figcaption className="text-center text-sm text-gray-400 mt-2 italic">
+                                    <figcaption className="mt-2 text-sm text-muted">
                                         {block.caption}
                                     </figcaption>
                                 )}
@@ -121,7 +121,7 @@ const ContentRenderer = ({ blocks, onImageClick }) => {
                         );
 
                     case 'divider':
-                        return <hr key={index} className="border-gray-100 my-2" />;
+                        return <hr key={index} className="my-2 border-line" />;
 
                     default:
                         return null;
